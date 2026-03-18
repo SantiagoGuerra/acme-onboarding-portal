@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { validateEmail } from "@/lib/validators/email";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -33,9 +34,13 @@ export default function RegisterPage() {
     setIsLoading(true);
 
     try {
-      // NOTE: No client-side email validation before submit!
-      // This is part of the bug — the form submits without
-      // checking if the email is valid first.
+      // Client-side email validation before submit
+      const emailCheck = validateEmail(formData.email);
+      if (!emailCheck.valid) {
+        setErrors((prev) => ({ ...prev, email: emailCheck.error || "Invalid email" }));
+        setIsLoading(false);
+        return;
+      }
 
       const response = await fetch("/api/register", {
         method: "POST",

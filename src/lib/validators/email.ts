@@ -3,21 +3,14 @@ import { z } from "zod";
 /**
  * Email validation schema.
  *
- * ⚠️ INTENTIONAL BUG FOR DEMO:
- * This regex is too permissive — it does NOT properly validate email format.
- * It allows strings like "user@", "foo@bar", and "test@.com" to pass.
- * The bug: the regex only checks for an @ symbol, not for a valid domain.
- *
- * A proper implementation would use a stricter regex or zod's built-in .email().
+ * Uses zod's built-in .email() validator which follows RFC 5322.
+ * This properly rejects emails without valid domains like "user@" or "test@.com".
  */
-
-// BUG: This regex only checks for @ sign, not valid email format
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]*$/;
 
 export const emailSchema = z
   .string()
   .min(1, "Email is required")
-  .regex(EMAIL_REGEX, "Please enter a valid email address")
+  .email("Please enter a valid email address")
   .max(254, "Email must be less than 254 characters");
 
 export function validateEmail(email: string): {
