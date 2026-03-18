@@ -1,0 +1,22 @@
+---
+description: Security guidelines
+globs: ["src/app/api/**/*", "src/lib/validators/**/*"]
+alwaysApply: false
+---
+
+# Security Rules
+
+## Input Validation
+- NEVER trust client-side validation alone
+- ALL API routes must validate input with zod schemas
+- Sanitize user input before storage
+- Email validation must check format AND domain
+
+## Secrets
+- No hardcoded secrets, tokens, or API keys
+- Use environment variables for configuration
+- Never log sensitive user data (passwords, tokens)
+
+## Headers
+- API routes should set appropriate CORS headers
+- Use Content-Security-Policy in production

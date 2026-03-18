@@ -1,0 +1,15 @@
+{
+  "install": "npm install && npx playwright install chromium",
+  "start": "npm run dev",
+  "terminals": [
+    {
+      "name": "dev-server",
+      "command": "npm run dev",
+      "waitForPort": 3000
+    },
+    {
+      "name": "tests",
+      "command": "echo 'Ready for tests. Run: npm test'"
+    }
+  ]
+}

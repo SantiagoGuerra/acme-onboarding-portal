@@ -1,0 +1,31 @@
+---
+description: Product context and requirements for Acme Onboarding Portal
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Product Rules
+
+## What is this product?
+Acme Onboarding Portal is a user-facing registration and onboarding web application.
+New users sign up, verify their email, complete their profile, and land on a welcome dashboard.
+
+## User Flow
+1. Landing page → Click "Get Started"
+2. Registration form: name, email, password
+3. Email verification (simulated in demo)
+4. Profile completion: company, role, avatar
+5. Welcome dashboard with getting started checklist
+
+## UX Requirements
+- Forms must show inline validation errors immediately
+- Email validation must happen BEFORE form submission
+- Loading states on all async operations
+- Mobile-responsive (min 320px)
+- Accessible: all inputs have labels, error messages use aria-live
+
+## Business Rules
+- Email must be valid format AND not already registered
+- Password: minimum 8 characters, at least 1 number, 1 uppercase
+- Company name: required, 2-100 characters
+- Role: must be selected from predefined list

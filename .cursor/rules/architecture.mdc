@@ -1,0 +1,44 @@
+---
+description: Architecture decisions and patterns
+globs: ["src/**/*"]
+alwaysApply: true
+---
+
+# Architecture Rules
+
+## Patterns
+- **Server Components** by default; use `"use client"` only when needed (forms, interactivity)
+- **API Routes** in `src/app/api/` for all backend logic
+- **Validation** with `zod` schemas in `src/lib/validators/`
+- **Types** in `src/lib/types.ts`
+- **No ORMs** — this is a demo app; use in-memory data store
+
+## File Organization
+```
+src/
+  app/
+    page.tsx              # Landing page
+    register/page.tsx     # Registration form
+    onboarding/page.tsx   # Profile completion
+    dashboard/page.tsx    # Welcome dashboard
+    api/
+      register/route.ts   # POST /api/register
+      validate-email/route.ts # POST /api/validate-email
+  components/
+    OnboardingForm.tsx
+    EmailInput.tsx
+    PasswordInput.tsx
+    ProfileForm.tsx
+  lib/
+    validators/
+      email.ts
+      password.ts
+      profile.ts
+    types.ts
+    store.ts              # In-memory data store
+```
+
+## Error Handling
+- API routes: try/catch with consistent error responses
+- Client: error boundaries for unexpected errors
+- Forms: field-level validation with zod

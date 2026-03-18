@@ -1,0 +1,23 @@
+---
+description: Deployment and environment setup
+globs: ["*.config.*", "package.json"]
+alwaysApply: false
+---
+
+# Deployment Rules
+
+## Environment
+- Node 20+
+- npm (not yarn or pnpm)
+- Port 3000 for development
+
+## Commands
+- `npm install` — install dependencies
+- `npm run dev` — start dev server
+- `npm run build` — production build
+- `npm start` — start production server
+
+## Preview Deploy
+- Vercel is the target platform
+- Every PR should be deployable
+- No build warnings allowed

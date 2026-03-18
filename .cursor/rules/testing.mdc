@@ -1,0 +1,28 @@
+---
+description: Testing standards and patterns
+globs: ["**/*.test.*", "e2e/**/*"]
+alwaysApply: false
+---
+
+# Testing Rules
+
+## Unit Tests (Jest)
+- Test all validation functions in `src/lib/validators/`
+- Test API route handlers
+- Mock external dependencies
+- Aim for 80%+ coverage on validators
+
+## E2E Tests (Playwright)
+- Test the complete registration flow
+- Test form validation error states
+- Test responsive behavior (mobile + desktop viewports)
+- Screenshots on failure
+
+## Naming
+- Unit: `[module].test.ts`
+- E2E: `[flow].spec.ts`
+
+## Commands
+- `npm test` — run all unit tests
+- `npm run test:e2e` — run Playwright tests
+- `npm run test:coverage` — coverage report
